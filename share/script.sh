@@ -1,0 +1,1 @@
+ifconfig eth0>>/usr/share/nginx/html/index.html

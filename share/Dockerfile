@@ -6,8 +6,14 @@ ARG path=/etc/nginx/nginx.conf
 
 COPY nginx.conf $path
 
-RUN cat >> /usr/share/nginx/html/index.html
+RUN mkdir -p /scripts
 
-CMD ["$(ifconfig eth0)"]
+COPY script.sh /scripts
+
+WORKDIR /scripts
+
+RUN chmod +x script.sh
+
+RUN /scripts/script.sh
 
 CMD ["nginx", "-g", "daemon off;"]
